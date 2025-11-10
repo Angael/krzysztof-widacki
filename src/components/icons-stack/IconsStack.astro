@@ -1,0 +1,43 @@
+---
+const icons = [
+  "ts.avif",
+  "js.avif",
+  "vite.avif",
+  "react.avif",
+  "tanstack.avif",
+  "redux.avif",
+  "next.avif",
+  "html.avif",
+  "css.avif",
+  "astro.avif",
+  "node.avif",
+  "sql.avif",
+  "docker.avif"
+];
+---
+
+<div class="icons-stack">
+  {
+    icons.map((icon) => (
+      <img
+        src={`/icons-stack/${icon}`}
+        alt={icon.split(".")[0]}
+        title={icon.split(".")[0]}
+        width="40"
+        height="40"
+      />
+    ))
+  }
+</div>
+
+<style>
+  .icons-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  img {
+    object-fit: contain;
+  }
+</style>

@@ -29,6 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-size: 1rem;
 }
 
 *,
@@ -118,4 +119,7 @@ h6 {
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0;
+}
+
+.container {
 }

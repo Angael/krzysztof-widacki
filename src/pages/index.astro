@@ -1,19 +1,23 @@
 ---
 import Layout from "../components/Layout.astro";
+import IconsStack from "../components/icons-stack/IconsStack.astro";
 ---
 
 <Layout>
-  <h1>Krzysztof Widacki</h1>
-  <h2>Frontend Developer</h2>
+  <div class="title">
+    <h1>Krzysztof Widacki</h1>
+    <h2>Web Developer</h2>
+  </div>
 
-  <img src="/me.webp" alt="Krzysztof Widacki" />
+  <IconsStack />
 
-  <h3>About me</h3>
   <p>
     Dedicated Frontend Developer with a passion for crafting smooth,
     high-quality web experiences. Coding isn't just my job—it's my favorite way
     to spend time.
   </p>
+
+  <img src="/me.webp" alt="Krzysztof Widacki" />
 
   <h3>Work Experience</h3>
 
@@ -128,7 +132,8 @@ import Layout from "../components/Layout.astro";
   <ul>
     <li>
       Email: <a href="mailto:krzysztofwidacki@gmail.com"
-        >krzysztofwidacki@gmail.com</a>
+        >krzysztofwidacki@gmail.com</a
+      >
     </li>
     <li>
       Website: <a href="https://krzysztof.widacki.me">krzysztof.widacki.me</a>
@@ -139,16 +144,44 @@ import Layout from "../components/Layout.astro";
 </Layout>
 
 <style>
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
   h1 {
-    font-size: 3rem;
-    text-align: center;
-    margin-top: 2rem;
+    font-size: 3.2rem;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
   }
 
   h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-top: 1rem;
-    color: var(--c-text-secondary);
+    font-size: 1.2rem; /* 12px */
+    color: var(--c-primary);
+  }
+
+  article {
+    padding: 1.5rem;
+  }
+
+  article h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  article p {
+    margin: 0.5rem 0;
+  }
+
+  article ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  article li {
+    margin-bottom: 0.5rem;
   }
 </style>

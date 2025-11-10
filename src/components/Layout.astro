@@ -25,6 +25,10 @@ const { title = "Krzysztof Widacki" } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
@@ -34,8 +38,26 @@ const { title = "Krzysztof Widacki" } = Astro.props;
   </>
 
   <body>
-    <main class="stack gap-32">
+    <main>
       <slot />
     </main>
   </body>
 </html>
+
+<style>
+  main {
+    display: flex;
+    flex-flow: column;
+    gap: 32px;
+
+    max-width: 21cm; /* A4 width */
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    main {
+      padding: 0 1rem;
+    }
+  }
+</style>
