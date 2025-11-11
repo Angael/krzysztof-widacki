@@ -13,6 +13,7 @@ const projects: Project[] = [
     name: "My Portfolio site",
     description: "This minimalistic site, hosted on my VPS 😊",
     tags: ["Astro", "TS"],
+    imgSrc: "/projects/portfolio-site.avif",
     source: "https://github.com/Angael/angael-project",
     href: "/"
   },
@@ -97,7 +98,9 @@ const projects: Project[] = [
 
           <header class="name">{project.name}</header>
 
-          {project.imgSrc && <img src={project.imgSrc} alt={project.name} />}
+          {project.imgSrc && (
+            <img class="project-img" src={project.imgSrc} alt={project.name} />
+          )}
 
           <p class="desc">{project.description}</p>
 
@@ -158,6 +161,11 @@ const projects: Project[] = [
 
   .desc {
     font-size: 0.875rem;
+  }
+
+  .project-img {
+    height: 150px;
+    object-fit: cover;
   }
 
   .tags {
