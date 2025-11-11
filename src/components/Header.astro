@@ -2,36 +2,74 @@
 import IconsStack from "./icons-stack/IconsStack.astro";
 ---
 
-<div class="title">
-  <h1>Krzysztof Widacki</h1>
-  <h2>Web Developer</h2>
+<div class="flex">
+  <div class="left">
+    <div class="title">
+      <h1>Krzysztof Widacki</h1>
+      <h2>Web Developer</h2>
+    </div>
+
+    <p>I like building my own tools using mostly JavaScript technologies.</p>
+
+    <IconsStack />
+  </div>
+
+  <div class="right">
+    <img class="me" src="/me.webp" alt="Krzysztof Widacki" />
+  </div>
 </div>
 
-<IconsStack />
-
-<p>
-  Dedicated Frontend Developer with a passion for crafting smooth, high-quality
-  web experiences. Coding isn't just my job—it's my favorite way to spend time.
-</p>
-
-<img src="/me.webp" alt="Krzysztof Widacki" />
-
 <style>
-  .title {
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  .left {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    gap: 24px;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    & h1 {
+      white-space: nowrap;
+      font-size: 3.2rem;
+      font-weight: 700;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    & h2 {
+      font-size: 1.2rem; /* 12px */
+      color: var(--c-primary);
+    }
   }
 
-  h1 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    font-family: "Montserrat", sans-serif;
-  }
+  .right {
+    position: relative;
+    height: 200px;
+    width: 240px;
 
-  h2 {
-    font-size: 1.2rem; /* 12px */
-    color: var(--c-primary);
+    .me {
+      position: absolute;
+      left: -80px;
+      top: -10px;
+
+      max-width: 400px;
+      clip-path: polygon(25% 6%, 80% 3%, 79% 49%, 19% 54%);
+
+      transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      &:hover {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
   }
 </style>
