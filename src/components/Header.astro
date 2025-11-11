@@ -2,14 +2,17 @@
 import IconsStack from "./icons-stack/IconsStack.astro";
 ---
 
-<div class="flex">
+<div class="header">
   <div class="left">
     <div class="title">
       <h1>Krzysztof Widacki</h1>
       <h2>Web Developer</h2>
     </div>
 
-    <p>I like building my own tools using mostly JavaScript technologies.</p>
+    <div style="margin-bottom:auto">
+      <p>I build my tools using JavaScript technologies.</p>
+      <p>Here you can find my projects, contact and CV!</p>
+    </div>
 
     <IconsStack />
   </div>
@@ -20,11 +23,11 @@ import IconsStack from "./icons-stack/IconsStack.astro";
 </div>
 
 <style>
-  .flex {
+  .header {
     display: flex;
     justify-content: space-between;
     gap: 32px;
-    margin-top: 32px;
+    margin-top: 20svh;
   }
 
   .left {
@@ -55,7 +58,7 @@ import IconsStack from "./icons-stack/IconsStack.astro";
 
   .right {
     position: relative;
-    height: 200px;
+    height: 300px;
     width: 240px;
 
     .me {
