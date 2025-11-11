@@ -1,10 +1,13 @@
 ---
 import Header from "../components/Header.astro";
 import Layout from "../components/Layout.astro";
+import Projects from "../components/Projects.astro";
 ---
 
 <Layout>
   <Header />
+
+  <Projects />
 
   <h3>Skills</h3>
 
@@ -45,6 +48,11 @@ import Layout from "../components/Layout.astro";
 </Layout>
 
 <style>
+  h3 {
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+  }
+
   article {
     padding: 1.5rem;
   }

@@ -1,0 +1,144 @@
+---
+export type Project = {
+  name: string;
+  description: string;
+  imgSrc?: string;
+  tags: string[];
+  href?: string;
+  source?: string;
+};
+
+const projects: Project[] = [
+  {
+    name: "My Portfolio site",
+    description: "This site",
+    tags: ["React", "TS", "MUI"],
+    source: "https://github.com/Angael/angael-project",
+    href: "/"
+  },
+  {
+    name: "KryptoBreaker",
+    description:
+      "Website created to help people learn cryptographic algorithms for free and because I was lazy and wanted to cheat on my collage exams.",
+    imgSrc: "/projects/kryptobreaker.avif",
+    tags: ["React", "JS", "MUI"],
+    source: "https://github.com/Angael/KryptoBreaker",
+    href: "https://crypto.widacki.me/"
+  },
+  {
+    name: "Cerebro (frontend)",
+    description:
+      "Frontend for cerebro project. Disk drive, kind of like google drive. Compresses videos and images.",
+    tags: ["React", "TS", "MUI"],
+    source: "https://github.com/Angael/cerebro-frontend",
+    href: "https://cerebro.widacki.me/"
+  },
+  {
+    name: "Cerebro (backend)",
+    description:
+      "Backend for cerebro project. Disk drive, kind of like google drive. Compresses videos and images.",
+    tags: ["Nest.js", "TS", "SQL"],
+    source: "https://github.com/Angael/cerebro-backend",
+    href: "https://cerebro.widacki.me/"
+  },
+  {
+    name: "PPK helper",
+    description:
+      'CMD project written in C. It gave me the highest grade in the first semester of university. It calculates Polish "Pracownicze Plany Kapitałowe" (sytem for saving money for employees) worth after n years with given circumstances.',
+    tags: ["C"],
+    source: "https://github.com/Angael/C_PracowniczePlanyKapitalowe"
+  },
+  {
+    name: "FFMPEG helper",
+    description:
+      "Site for generating simple ffmpeg commands for cutting videos",
+    tags: ["React", "JS"],
+    href: "https://ffmpeg.widacki.me/"
+  },
+  {
+    name: "Iwona Rogowska Widacka",
+    description:
+      "One of the first sites I ever created. It's for my mother's business and her presence online. To this day it's one of the results when searching for 'Psycholog Belgia' in Google",
+    tags: ["PHP", "JS"],
+    href: "https://psychologonline.be/"
+  }
+];
+---
+
+<section>
+  <h3>Projects</h3>
+  <p class="accent">I built this</p>
+
+  <div class="project-grid">
+    {
+      projects.map((project) => (
+        <article>
+          <div class="tags">
+            {project.tags.map((tag) => (
+              <span>#{tag} </span>
+            ))}
+          </div>
+
+          <h4>{project.name}</h4>
+
+          {project.imgSrc && <img src={project.imgSrc} alt={project.name} />}
+
+          <p>{project.description}</p>
+
+          {(project.href || project.source) && (
+            <div class="group">
+              {project.href && (
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit
+                </a>
+              )}
+              {project.source && (
+                <a
+                  href={project.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Repository
+                </a>
+              )}
+            </div>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .accent {
+    font-size: 1.2rem; /* 12px */
+    color: var(--c-primary);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  article {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--color-background-secondary);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .tags {
+    font-size: 0.875rem;
+    color: var(--c-text-secondary);
+  }
+</style>
