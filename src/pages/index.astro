@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Layout from "../components/Layout.astro";
 import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
 ---
 
 <Layout>
@@ -9,48 +10,5 @@ import Projects from "../components/Projects.astro";
 
   <Projects />
 
-  <h3>Contact</h3>
-
-  <ul>
-    <li>
-      Email: <a href="mailto:krzysztofwidacki@gmail.com"
-        >krzysztofwidacki@gmail.com</a
-      >
-    </li>
-    <li>
-      Website: <a href="https://krzysztof.widacki.me">krzysztof.widacki.me</a>
-    </li>
-    <li>Phone: <a href="tel:+48608466822">+48 608 466 822</a></li>
-    <li>GitHub: <a href="https://github.com/Angael">github.com/Angael</a></li>
-  </ul>
+  <Contact />
 </Layout>
-
-<style>
-  h3 {
-    font-size: 1.5rem;
-    font-family: "Montserrat", sans-serif;
-  }
-
-  article {
-    padding: 1.5rem;
-  }
-
-  article h4 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-  }
-
-  article p {
-    margin: 0.5rem 0;
-  }
-
-  article ul {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-  }
-
-  article li {
-    margin-bottom: 0.5rem;
-  }
-</style>
