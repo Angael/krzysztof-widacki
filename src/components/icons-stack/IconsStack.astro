@@ -2,18 +2,18 @@
 const icons = [
   { src: "ts.avif" },
   { src: "js.avif" },
-  { src: "vite.avif" },
-  { src: "react.avif" },
-  { src: "tanstack.avif" },
-  { src: "redux.avif" },
-  { src: "next.avif" },
   { src: "html.avif" },
   { src: "css.avif" },
-  { src: "astro.avif" },
   { src: "node.avif" },
-  { src: "sql.avif" },
+  { src: "bun.avif" },
+  { src: "react.avif" },
+  { src: "vite.avif" },
+  { src: "next.avif" },
+  { src: "astro.avif" },
+  { src: "tanstack.avif" },
   { src: "docker.avif" },
   { src: "azure.avif" },
+  { src: "sql.avif" },
   { src: "tauri.avif" },
   { src: "rust.avif" }
 ];
@@ -36,10 +36,13 @@ const icons = [
 <style>
   .icons-stack {
     display: grid;
+    margin: auto;
     /* 4x4 */
     grid-template-columns: repeat(4, auto);
     grid-template-rows: repeat(4, auto);
-    gap: 12px;
+    align-items: center;
+    justify-items: center;
+    gap: 16px;
   }
 
   img {
