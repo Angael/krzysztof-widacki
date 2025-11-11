@@ -11,10 +11,26 @@ export type Project = {
 const projects: Project[] = [
   {
     name: "My Portfolio site",
-    description: "This site",
-    tags: ["React", "TS", "MUI"],
+    description: "This minimalistic site, hosted on my VPS 😊",
+    tags: ["Astro", "TS"],
     source: "https://github.com/Angael/angael-project",
     href: "/"
+  },
+  {
+    name: "Hipoteka",
+    description:
+      "Fast mortgage calculator app for mortgages with overpayments, summaries, charts and tables.",
+    imgSrc: "/projects/hipoteka.avif",
+    tags: ["Vite", "React", "TS", "Mantine"],
+    source: "https://github.com/Angael/hipoteka",
+    href: "https://hipoteka.widacki.me/"
+  },
+  {
+    name: "Tauri-2-test app (WIP)",
+    description: "Not yet finished Tauri x React project",
+    imgSrc: "/projects/tauri-2-test.avif",
+    tags: ["Tauri", "React", "TS", "Rust", "Mantine"],
+    source: "https://github.com/Angael/tauri-2-test"
   },
   {
     name: "KryptoBreaker",
@@ -29,22 +45,22 @@ const projects: Project[] = [
     name: "Cerebro (frontend)",
     description:
       "Frontend for cerebro project. Disk drive, kind of like google drive. Compresses videos and images.",
-    tags: ["React", "TS", "MUI"],
-    source: "https://github.com/Angael/cerebro-frontend",
-    href: "https://cerebro.widacki.me/"
+    tags: ["Next", "React", "TS", "Tanstack"],
+    source: "https://github.com/Angael/cerebro-frontend"
+    // href: "https://cerebro.widacki.me/"
   },
   {
     name: "Cerebro (backend)",
     description:
       "Backend for cerebro project. Disk drive, kind of like google drive. Compresses videos and images.",
-    tags: ["Nest.js", "TS", "SQL"],
-    source: "https://github.com/Angael/cerebro-backend",
-    href: "https://cerebro.widacki.me/"
+    tags: ["TS", "Hono.js", "PostgreSQL"],
+    source: "https://github.com/Angael/cerebro-backend"
+    // href: "https://cerebro.widacki.me/"
   },
   {
     name: "PPK helper",
     description:
-      'CMD project written in C. It gave me the highest grade in the first semester of university. It calculates Polish "Pracownicze Plany Kapitałowe" (sytem for saving money for employees) worth after n years with given circumstances.',
+      'CMD project written in C, it gave me the highest grade in in on my year. It calculates Polish "Pracownicze Plany Kapitałowe" (sytem for saving money for employees) worth after n years with given circumstances.',
     tags: ["C"],
     source: "https://github.com/Angael/C_PracowniczePlanyKapitalowe"
   },
@@ -59,7 +75,7 @@ const projects: Project[] = [
     name: "Iwona Rogowska Widacka",
     description:
       "One of the first sites I ever created. It's for my mother's business and her presence online. To this day it's one of the results when searching for 'Psycholog Belgia' in Google",
-    tags: ["PHP", "JS"],
+    tags: ["Astro", "TS"],
     href: "https://psychologonline.be/"
   }
 ];
@@ -74,19 +90,19 @@ const projects: Project[] = [
       projects.map((project) => (
         <article>
           <div class="tags">
-            {project.tags.map((tag) => (
-              <span>#{tag} </span>
+            {project.tags.map((tag, i, arr) => (
+              <span>{tag + (i !== arr.length - 1 ? "," : "")}</span>
             ))}
           </div>
 
-          <h4>{project.name}</h4>
+          <header class="name">{project.name}</header>
 
           {project.imgSrc && <img src={project.imgSrc} alt={project.name} />}
 
-          <p>{project.description}</p>
+          <p class="desc">{project.description}</p>
 
           {(project.href || project.source) && (
-            <div class="group">
+            <div class="links">
               {project.href && (
                 <a
                   href={project.href}
@@ -122,23 +138,41 @@ const projects: Project[] = [
   .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+    gap: 32px;
     margin-top: 16px;
   }
 
   article {
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background-color: var(--color-background-secondary);
-    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .desc {
+    font-size: 0.875rem;
   }
 
   .tags {
     font-size: 0.875rem;
     color: var(--c-text-secondary);
+
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+
+    margin-bottom: -8px;
+  }
+
+  .links {
+    display: flex;
+    gap: 8px;
   }
 </style>

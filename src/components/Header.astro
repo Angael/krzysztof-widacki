@@ -2,7 +2,7 @@
 import IconsStack from "./icons-stack/IconsStack.astro";
 ---
 
-<div class="header">
+<section class="header">
   <div class="left">
     <div class="title">
       <h1>Krzysztof Widacki</h1>
@@ -20,7 +20,7 @@ import IconsStack from "./icons-stack/IconsStack.astro";
   <div class="right">
     <img class="me" src="/me.webp" alt="Krzysztof Widacki" />
   </div>
-</div>
+</section>
 
 <style>
   .header {
@@ -96,10 +96,14 @@ import IconsStack from "./icons-stack/IconsStack.astro";
       max-width: 400px;
       clip-path: polygon(25% 6%, 80% 3%, 79% 49%, 19% 54%);
 
-      transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition:
+        clip-path 1.2s,
+        transform 1.2s;
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 
       @media (min-width: 810px) {
         &:hover {
+          transform: translateY(-130px);
           clip-path: polygon(7% 4%, 100% 0, 91% 93%, 1% 95%);
         }
       }
