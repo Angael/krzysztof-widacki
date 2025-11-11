@@ -26,8 +26,6 @@ const icons = [
         src={`/icons-stack/${src}`}
         alt={src.split(".")[0]}
         title={src.split(".")[0]}
-        width="40"
-        height="40"
       />
     ))
   }
@@ -37,9 +35,16 @@ const icons = [
   .icons-stack {
     display: grid;
     /* 4x4 */
-    grid-template-columns: repeat(8, auto);
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(2, 40px);
     gap: 16px;
+
+    @media (max-width: 810px) {
+      grid-template-columns: repeat(4, 64px);
+      grid-template-rows: repeat(4, 64px);
+      gap: 16px;
+      margin: auto;
+    }
   }
 
   img {

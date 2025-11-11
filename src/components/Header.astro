@@ -24,10 +24,32 @@ import IconsStack from "./icons-stack/IconsStack.astro";
 
 <style>
   .header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
     gap: 32px;
-    margin-top: 20svh;
+    margin-top: 10svh;
+  }
+
+  @media (min-width: 810px) {
+    .header {
+      grid-template-columns: 1fr auto;
+      margin-top: 20svh;
+    }
+
+    .right {
+      order: 2;
+    }
+  }
+
+  .left {
+    order: 2;
+  }
+
+  @media (min-width: 810px) {
+    .left {
+      order: 1;
+    }
   }
 
   .left {
@@ -44,10 +66,14 @@ import IconsStack from "./icons-stack/IconsStack.astro";
     }
 
     & h1 {
-      white-space: nowrap;
+      /* white-space: nowrap; */
       font-size: 3.2rem;
       font-weight: 700;
       font-family: "Montserrat", sans-serif;
+
+      @media (max-width: 810px) {
+        font-size: 2rem;
+      }
     }
 
     & h2 {
@@ -70,8 +96,11 @@ import IconsStack from "./icons-stack/IconsStack.astro";
       clip-path: polygon(25% 6%, 80% 3%, 79% 49%, 19% 54%);
 
       transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-      &:hover {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+      @media (min-width: 810px) {
+        &:hover {
+          clip-path: polygon(7% 4%, 100% 0, 91% 93%, 1% 95%);
+        }
       }
     }
   }
