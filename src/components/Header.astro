@@ -1,0 +1,37 @@
+---
+import IconsStack from "./icons-stack/IconsStack.astro";
+---
+
+<div class="title">
+  <h1>Krzysztof Widacki</h1>
+  <h2>Web Developer</h2>
+</div>
+
+<IconsStack />
+
+<p>
+  Dedicated Frontend Developer with a passion for crafting smooth, high-quality
+  web experiences. Coding isn't just my job—it's my favorite way to spend time.
+</p>
+
+<img src="/me.webp" alt="Krzysztof Widacki" />
+
+<style>
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  h2 {
+    font-size: 1.2rem; /* 12px */
+    color: var(--c-primary);
+  }
+</style>

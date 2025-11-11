@@ -1,28 +1,31 @@
 ---
 const icons = [
-  "ts.avif",
-  "js.avif",
-  "vite.avif",
-  "react.avif",
-  "tanstack.avif",
-  "redux.avif",
-  "next.avif",
-  "html.avif",
-  "css.avif",
-  "astro.avif",
-  "node.avif",
-  "sql.avif",
-  "docker.avif"
+  { src: "ts.avif" },
+  { src: "js.avif" },
+  { src: "vite.avif" },
+  { src: "react.avif" },
+  { src: "tanstack.avif" },
+  { src: "redux.avif" },
+  { src: "next.avif" },
+  { src: "html.avif" },
+  { src: "css.avif" },
+  { src: "astro.avif" },
+  { src: "node.avif" },
+  { src: "sql.avif" },
+  { src: "docker.avif" },
+  { src: "azure.avif" },
+  { src: "tauri.avif" },
+  { src: "rust.avif" }
 ];
 ---
 
 <div class="icons-stack">
   {
-    icons.map((icon) => (
+    icons.map(({ src }) => (
       <img
-        src={`/icons-stack/${icon}`}
-        alt={icon.split(".")[0]}
-        title={icon.split(".")[0]}
+        src={`/icons-stack/${src}`}
+        alt={src.split(".")[0]}
+        title={src.split(".")[0]}
         width="40"
         height="40"
       />
@@ -32,8 +35,10 @@ const icons = [
 
 <style>
   .icons-stack {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    /* 4x4 */
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, auto);
     gap: 12px;
   }
 

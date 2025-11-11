@@ -1,82 +1,10 @@
 ---
+import Header from "../components/Header.astro";
 import Layout from "../components/Layout.astro";
-import IconsStack from "../components/icons-stack/IconsStack.astro";
 ---
 
 <Layout>
-  <div class="title">
-    <h1>Krzysztof Widacki</h1>
-    <h2>Web Developer</h2>
-  </div>
-
-  <IconsStack />
-
-  <p>
-    Dedicated Frontend Developer with a passion for crafting smooth,
-    high-quality web experiences. Coding isn't just my job—it's my favorite way
-    to spend time.
-  </p>
-
-  <img src="/me.webp" alt="Krzysztof Widacki" />
-
-  <h3>Work Experience</h3>
-
-  <article>
-    <h4>Grupa Pracuj</h4>
-    <p><strong>Senior Frontend Developer</strong></p>
-    <p>2019 - present</p>
-    <p>Warsaw</p>
-    <ul>
-      <li>
-        Created and maintained critical, highly modular and interactive web apps
-        and their CI/CD.
-      </li>
-      <li>Led development of job offer creator's frontend side.</li>
-      <li>
-        Collaborated with cross-functional teams to gather requirements, design
-        new applications, and implement new features.
-      </li>
-      <li>Automated testing and deployments.</li>
-      <li>Ensured good UX/UI and Accessibility.</li>
-      <li>Won 3 CTFs and 1 Hackathon.</li>
-      <li>Led technical interviews.</li>
-    </ul>
-    <p><em>Typescript, React, Node, Next, Azure, Kubernetes</em></p>
-  </article>
-
-  <article>
-    <h4>BPO International</h4>
-    <p><strong>Junior PHP developer</strong></p>
-    <p>2019 (7 months)</p>
-    <ul>
-      <li>Created landing pages for various products.</li>
-      <li>Used Angular to prototype drag and drop page builders.</li>
-    </ul>
-    <p><em>PHP, Symfony, Typescript, Angular</em></p>
-  </article>
-
-  <article>
-    <h4>Acaisoft</h4>
-    <p><strong>Internship</strong></p>
-    <p>2017 (1 month)</p>
-    <ul>
-      <li>Helped write internal employee programs with Express.js.</li>
-      <li>Wrote automated tests with postman.</li>
-    </ul>
-    <p><em>Node.js, Express, Postman</em></p>
-  </article>
-
-  <h3>Education</h3>
-
-  <article>
-    <h4>WIT Academy Warsaw</h4>
-    <p>2018 - 2023</p>
-  </article>
-
-  <article>
-    <h4>Technical school nr 1 in Warsaw</h4>
-    <p>2014 - 2018</p>
-  </article>
+  <Header />
 
   <h3>Skills</h3>
 
@@ -100,33 +28,6 @@ import IconsStack from "../components/icons-stack/IconsStack.astro";
     <p>SQL</p>
   </section>
 
-  <section>
-    <h4>Long skill list</h4>
-    <ul>
-      <li>TypeScript</li>
-      <li>JavaScript</li>
-      <li>React</li>
-      <li>Next.js</li>
-      <li>Redux</li>
-      <li>React Query</li>
-      <li>MUI & other</li>
-      <li>CSS / SCSS</li>
-      <li>Node.js</li>
-      <li>Express.js</li>
-      <li>SSR and SPA</li>
-      <li>Monorepos</li>
-      <li>Docker</li>
-      <li>Kubernetes</li>
-      <li>PostgreSQL</li>
-      <li>Azure DevOps</li>
-    </ul>
-  </section>
-
-  <section>
-    <h4>Languages</h4>
-    <p>Polish, English C2, German B1</p>
-  </section>
-
   <h3>Contact</h3>
 
   <ul>
@@ -144,24 +45,6 @@ import IconsStack from "../components/icons-stack/IconsStack.astro";
 </Layout>
 
 <style>
-  .title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  h1 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    font-family: "Montserrat", sans-serif;
-  }
-
-  h2 {
-    font-size: 1.2rem; /* 12px */
-    color: var(--c-primary);
-  }
-
   article {
     padding: 1.5rem;
   }
