@@ -9,7 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.4.13",
-    "minalytics": "github:Angael/analytics#main&path:client"
+    "astro": "^7.4.13"
   }
 }
