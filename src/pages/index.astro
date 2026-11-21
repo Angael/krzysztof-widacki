@@ -1,14 +1,272 @@
 ---
-import Header from "../components/Header.astro";
-import Layout from "../components/Layout.astro";
-import Projects from "../components/Projects.astro";
-import Contact from "../components/Contact.astro";
+import "@fontsource-variable/inter-tight";
+import { Image } from "astro:assets";
+import me from "../assets/me.webp";
+
+const built = [
+  "Self-hosted cookieless web analytics",
+  "D&D 2024 character builder and rules reference",
+  "AI writing workspace for stories and RPG campaigns, with an MCP server",
+  "Food, recipe and workout tracker with AI food scanning",
+  "Tabletop RPG music player and playlist studio",
+  "Local ComfyUI image generator alternative",
+  "Two-way cloud backup desktop app (rclone bisync)",
+  "Cryptography calculator that shows its work",
+  "Subtitle generator for video and audio",
+  "Video downloader and re-encoder",
+  "Photo and video album site",
+  "Self-hosted media sharing platform",
+  "Mortgage comparison calculator",
+  "Browser tab sorting extension",
+  "Desktop screen annotation tool",
+];
+const tools = ["T3 Code", "omp", "Claude Code", "Codex", "Hermes"];
+const stack = ["TypeScript", "React", "Astro", "SolidJS", "Vite", "Bun/Node", "Go", "Rust", "Python", "Docker"];
+const contact = [
+  ["Email", "krzysztofwidacki@gmail.com", "mailto:krzysztofwidacki@gmail.com"],
+  ["Website", "widacki.me", "https://widacki.me"],
+  ["Phone", "+48 608 466 822", "tel:+48608466822"],
+  ["GitHub", "github.com/Angael", "https://github.com/Angael"],
+  ["Skills", "github.com/Angael/krzysztof-widacki/.agents/skills", "https://github.com/Angael/krzysztof-widacki/tree/main/.agents/skills"],
+];
+const pad = (n: number) => String(n).padStart(2, "0");
 ---
 
-<Layout>
-  <Header />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Krzysztof Widacki</title>
+    <meta name="description" content="Krzysztof Widacki builds software, mostly by vibe coding with AI agents." />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <header class="grid masthead">
+      <p class="meta c1">Index</p>
+      <p class="meta c2">Krzysztof Widacki</p>
+      <p class="meta c3">Software, 2026</p>
+      <p class="meta c4"><a href="#contact">Contact ↓</a></p>
 
-  <Projects />
+      <h1 class="name">Krzysztof<br />Widacki<span class="dot">.</span></h1>
 
-  <Contact />
-</Layout>
+      <figure class="photo">
+        <Image src={me} alt="Krzysztof Widacki" widths={[160, 320]} sizes="160px" loading="eager" />
+      </figure>
+      <p class="lede">I build software mostly by vibe coding with AI agents. This is what came out of it.</p>
+    </header>
+
+    <main>
+      <section class="grid block" aria-labelledby="built">
+        <h2 id="built" class="label"><span class="num">A</span> Built</h2>
+        <ol class="index">
+          {built.map((item, i) => (
+            <li>
+              <span class="n">{pad(i + 1)}</span>
+              <span class="t">{item}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="grid block" aria-labelledby="tools">
+        <h2 id="tools" class="label"><span class="num">B</span> Tools</h2>
+        <ul class="tools">
+          {tools.map((t) => <li>{t}</li>)}
+        </ul>
+      </section>
+
+      <section class="grid block small" aria-labelledby="stack">
+        <h2 id="stack" class="label"><span class="num">C</span> Stack</h2>
+        <p class="stack">{stack.join(" / ")}</p>
+      </section>
+
+      <section class="grid block" id="contact" aria-labelledby="contact-h">
+        <h2 id="contact-h" class="label"><span class="num">D</span> Contact</h2>
+        <dl class="contact">
+          {contact.map(([k, v, href]) => (
+            <div>
+              <dt>{k}</dt>
+              <dd><a href={href}>{v}</a></dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </main>
+
+    <footer class="grid foot">
+      <p class="meta c1">KW</p>
+      <p class="meta c4">{built.length} entries</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #ffffff;
+    --red: #e8250c;
+    --grey: #5a5a5a;
+    --rule: 2px solid var(--ink);
+    --g: clamp(16px, 2.5vw, 32px);
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter Tight Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0 var(--g);
+    font-feature-settings: "tnum" 1;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover, a:focus-visible { color: var(--red); }
+  a:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+  ::selection { background: var(--red); color: var(--paper); }
+  ol, ul { list-style: none; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--g);
+  }
+  .meta {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 12px 0;
+    border-top: var(--rule);
+  }
+  .c1 { grid-column: 1 / 4; }
+  .c2 { grid-column: 4 / 7; }
+  .c3 { grid-column: 7 / 10; }
+  .c4 { grid-column: 10 / 13; text-align: right; }
+
+  .masthead { padding-top: var(--g); }
+  .name {
+    grid-column: 1 / -1;
+    font-size: 23.5vw;
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: -0.065em;
+    margin: clamp(24px, 6vw, 80px) 0 clamp(20px, 3vw, 40px) -0.06em;
+  }
+  .dot { color: var(--red); }
+  .photo {
+    grid-column: 1 / 3;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #ddd;
+  }
+  .photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+    filter: grayscale(1) contrast(1.05);
+  }
+  .lede {
+    grid-column: 4 / 10;
+    align-self: end;
+    font-size: clamp(1.25rem, 2.4vw, 2rem);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  .block {
+    border-top: 8px solid var(--ink);
+    margin-top: clamp(56px, 9vw, 140px);
+    padding-top: 14px;
+  }
+  .label {
+    grid-column: 1 / 4;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    align-self: start;
+    position: sticky;
+    top: 14px;
+  }
+  .label .num { color: var(--red); margin-right: 0.6em; }
+
+  .index { grid-column: 4 / -1; counter-reset: none; }
+  .index li {
+    display: grid;
+    grid-template-columns: 2.4ch 1fr;
+    column-gap: 0.5ch;
+    align-items: baseline;
+    padding: 0.2em 0 0.24em;
+    border-bottom: 1px solid var(--ink);
+    font-size: clamp(1.35rem, 3.3vw, 3.1rem);
+    font-weight: 650;
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
+  .index li:first-child { padding-top: 0; }
+  .index .n {
+    color: var(--red);
+    font-weight: 800;
+    font-size: 0.5em;
+    letter-spacing: 0;
+    transform: translateY(-0.6em);
+  }
+  .index .t { text-wrap: balance; }
+
+  .tools {
+    grid-column: 4 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.28em;
+    font-size: clamp(2rem, 6.5vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.055em;
+    line-height: 0.95;
+  }
+  .tools li:not(:last-child)::after { content: ","; color: var(--red); }
+
+  .small { border-top-width: 2px; }
+  .stack { grid-column: 4 / -1; color: var(--grey); font-size: 0.9375rem; }
+
+  .contact { grid-column: 4 / -1; }
+  .contact div {
+    display: grid;
+    grid-template-columns: minmax(80px, 1fr) 4fr;
+    gap: var(--g);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--ink);
+    font-size: clamp(1rem, 1.6vw, 1.375rem);
+    font-weight: 550;
+  }
+  .contact dt { color: var(--grey); font-weight: 500; }
+  .contact dd { overflow-wrap: anywhere; }
+  .contact a { border-bottom: 2px solid var(--red); }
+
+  .foot { margin: clamp(56px, 9vw, 140px) 0 var(--g); }
+
+  @media (max-width: 760px) {
+    .c2, .c3 { display: none; }
+    .c1 { grid-column: 1 / 7; }
+    .c4 { grid-column: 7 / 13; }
+    .photo { grid-column: 1 / 4; }
+    .lede { grid-column: 5 / -1; }
+    .label { grid-column: 1 / -1; position: static; margin-bottom: 18px; }
+    .index, .tools, .stack, .contact { grid-column: 1 / -1; }
+    .contact div { grid-template-columns: 1fr; gap: 2px; }
+  }
+  @media (max-width: 420px) {
+    .photo { grid-column: 1 / 5; }
+    .lede { grid-column: 5 / -1; font-size: 1.1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>

@@ -1,31 +1,15 @@
-# Build stage
-FROM oven/bun:1-alpine AS build
-
+FROM oven/bun:1.3-alpine AS build
 WORKDIR /app
-
-# Copy package files
-COPY package.json bun.lock* ./
-
-# Install dependencies
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
-
-# Copy source files
 COPY . .
-
-# Build the application
 RUN bun run build
 
-# Production stage
-FROM nginx:alpine
-
-# Copy built files from build stage
+FROM nginxinc/nginx-unprivileged:1.29-alpine
+USER root
+RUN apk upgrade --no-cache
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
-
-# Copy nginx config (optional - nginx default works for most cases)
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start nginx
+USER 101
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
