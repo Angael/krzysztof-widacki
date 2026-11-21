@@ -140,7 +140,7 @@ const desc = "Krzysztof Widacki currently builds and ships software he wanted to
         <label class="field">
           <span class="sr">Command</span>
           <span class="mirror" aria-hidden="true"><span id="pre"></span><span id="car" class="cursor"> </span><span id="post"></span></span>
-          <input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder="" />
+          <textarea id="cmd" rows="1" wrap="off" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder=""></textarea>
         </label>
       </div>
     </main>
@@ -294,6 +294,7 @@ const desc = "Krzysztof Widacki currently builds and ships software he wanted to
   #cmd {
     position: absolute; inset: 0; width: 100%; margin: 0; padding: 0; border: 0; outline: 0;
     background: transparent; color: transparent; caret-color: transparent;
+    resize: none; overflow: hidden; white-space: pre;
     font: 16px/1.6 var(--mono); /* >=16px: no iOS zoom */
   }
   .mirror, .cmd-echo { font-size: 16px; }

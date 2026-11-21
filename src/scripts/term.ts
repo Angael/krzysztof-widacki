@@ -3,7 +3,7 @@
 const root = document.documentElement;
 const log = document.getElementById("log")!;
 const out = document.getElementById("out")!;
-const input = document.getElementById("cmd") as HTMLInputElement;
+const input = document.getElementById("cmd") as HTMLTextAreaElement;
 const pre = document.getElementById("pre")!;
 const car = document.getElementById("car")!;
 const post = document.getElementById("post")!;
@@ -323,6 +323,16 @@ function paint() {
 
 const history: string[] = [];
 let hi = 0;
+// Textarea (not <input>) so mobile Chrome skips its autofill bar; never allow newlines.
+input.addEventListener("beforeinput", (e) => {
+  if (e.inputType === "insertLineBreak" || e.inputType === "insertParagraph") {
+    e.preventDefault();
+    input.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+  }
+});
+input.addEventListener("input", () => {
+  if (input.value.includes("\n")) input.value = input.value.replace(/[\r\n]+/g, "");
+});
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
