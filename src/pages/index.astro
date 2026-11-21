@@ -1,14 +1,257 @@
 ---
-import Header from "../components/Header.astro";
-import Layout from "../components/Layout.astro";
-import Projects from "../components/Projects.astro";
-import Contact from "../components/Contact.astro";
+import { Image } from 'astro:assets';
+import '@fontsource-variable/fraunces';
+import '@fontsource/caveat/600.css';
+import me from '../assets/me.webp';
+
+const built = [
+  'Self-hosted cookieless web analytics',
+  'D&D 2024 character builder and rules reference',
+  'AI writing workspace for stories and RPG campaigns, with an MCP server',
+  'Food, recipe and workout tracker with AI food scanning',
+  'Tabletop RPG music player and playlist studio',
+  'Local ComfyUI image generator alternative',
+  'Two-way cloud backup desktop app (rclone bisync)',
+  'Cryptography calculator that shows its work',
+  'Subtitle generator for video and audio',
+  'Video downloader and re-encoder',
+  'Photo and video album site',
+  'Self-hosted media sharing platform',
+  'Mortgage comparison calculator',
+  'Browser tab sorting extension',
+  'Desktop screen annotation tool',
+];
+
+const tools = ['T3 Code', 'omp', 'Claude Code', 'Codex', 'Hermes'];
+const stack = ['TypeScript', 'React', 'Astro', 'SolidJS', 'Vite', 'Bun/Node', 'Go', 'Rust', 'Python', 'Docker'];
+
+const contact = [
+  { label: 'Email', text: 'krzysztofwidacki@gmail.com', href: 'mailto:krzysztofwidacki@gmail.com' },
+  { label: 'Phone', text: '+48 608 466 822', href: 'tel:+48608466822' },
+  { label: 'GitHub', text: 'github.com/Angael', href: 'https://github.com/Angael' },
+  { label: 'Website', text: 'widacki.me', href: 'https://widacki.me' },
+  {
+    label: 'Skills',
+    text: 'my agent skills',
+    href: 'https://github.com/Angael/krzysztof-widacki/tree/main/.agents/skills',
+  },
+];
 ---
 
-<Layout>
-  <Header />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Krzysztof Widacki builds software, mostly by vibe coding with AI agents." />
+    <meta name="theme-color" content="#efe4cf" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Krzysztof Widacki</title>
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <div class="intro">
+          <p class="hand hello">hi, I'm</p>
+          <h1>Krzysztof<br />Widacki</h1>
+          <p class="lede">I build software, mostly by vibe coding with AI agents.</p>
+        </div>
+        <figure class="polaroid">
+          <span class="tape" aria-hidden="true"></span>
+          <Image src={me} alt="Krzysztof in a cap and sunglasses" width={240} height={300} fit="cover" position="top" loading="eager" />
+          <figcaption class="hand">Malta, '25</figcaption>
+        </figure>
+      </header>
 
-  <Projects />
+      <section class="receipt" aria-labelledby="built">
+        <h2 id="built">Built</h2>
+        <p class="receipt-meta"><span>item</span><span>qty</span></p>
+        <ol>
+          {built.map((item) => <li><span>{item}</span><span class="dots" aria-hidden="true"></span><span class="qty">1</span></li>)}
+        </ol>
+        <p class="total"><span>Total</span><span>{built.length}</span></p>
+        <p class="hand thanks">thanks, Claude & co.</p>
+      </section>
 
-  <Contact />
-</Layout>
+      <section aria-labelledby="tools">
+        <h2 id="tools">Tools</h2>
+        <ul class="tags">
+          {tools.map((t) => <li>{t}</li>)}
+        </ul>
+      </section>
+
+      <section class="stack" aria-labelledby="stack">
+        <h2 id="stack">Usually with</h2>
+        <p>{stack.join(' · ')}</p>
+      </section>
+
+      <section aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <dl class="contact">
+          {contact.map((c) => (
+            <div>
+              <dt>{c.label}</dt>
+              <dd><a href={c.href}>{c.text}</a></dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --stone: #efe4cf;
+    --stone-2: #e5d6ba;
+    --paper: #fbf7ee;
+    --ink: #2a2118;
+    --muted: #6e5b45;
+    --sea: #1f5f7a;
+    --sun: #c8521f;
+    --display: 'Fraunces Variable', Georgia, serif;
+    --hand: 'Caveat', 'Comic Sans MS', cursive;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font: 1rem/1.55 var(--sans);
+    background:
+      radial-gradient(circle at 90% -10%, #f7c96a55 0, transparent 40%),
+      radial-gradient(#0000000a 1px, transparent 1px) 0 0 / 6px 6px,
+      var(--stone);
+    min-height: 100vh;
+  }
+  a { color: var(--sea); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--sun); text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px dashed var(--sun); outline-offset: 3px; }
+  .hand { font-family: var(--hand); font-weight: 600; }
+</style>
+
+<style>
+  main {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 7vw, 5rem) 1rem 5rem;
+    display: grid;
+    gap: 3.5rem;
+  }
+
+  h2 {
+    font: 700 0.75rem/1 var(--mono);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1rem;
+  }
+
+  /* hero */
+  .hero { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
+  .hello { margin: 0; font-size: 1.6rem; color: var(--sun); transform: rotate(-4deg); transform-origin: left; }
+  h1 {
+    font-family: var(--display);
+    font-weight: 750;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    font-size: clamp(2.6rem, 10vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0.2rem 0 1rem;
+  }
+  .lede { margin: 0; max-width: 24ch; font-size: 1.1rem; color: var(--muted); }
+
+  .polaroid {
+    position: relative;
+    flex: none;
+    margin: 0.5rem 0.5rem 0 0;
+    width: clamp(7rem, 24vw, 9.5rem);
+    background: var(--paper);
+    padding: 0.45rem 0.45rem 0;
+    box-shadow: 0 1px 2px #0002, 0 10px 24px -12px #4a2e1060;
+    transform: rotate(4deg);
+  }
+  .polaroid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; filter: saturate(0.9) sepia(0.12); }
+  .polaroid figcaption { text-align: center; font-size: 1.15rem; padding: 0.15rem 0 0.25rem; color: var(--muted); }
+  .tape {
+    position: absolute; top: -0.7rem; left: 50%; width: 4.2rem; height: 1.4rem;
+    transform: translateX(-50%) rotate(-6deg);
+    background: #f2d89acc; box-shadow: 0 1px 1px #0001;
+  }
+
+  /* receipt */
+  .receipt {
+    --edge: 9px;
+    position: relative;
+    background: var(--paper);
+    padding: 1.75rem clamp(1rem, 4vw, 2rem) 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    box-shadow: 0 12px 28px -18px #4a2e1080;
+    transform: rotate(-0.6deg);
+    -webkit-mask:
+      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(var(--edge) * 2) var(--edge) repeat-x,
+      linear-gradient(#000 0 0) top / 100% calc(100% - var(--edge)) no-repeat;
+    mask:
+      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(var(--edge) * 2) var(--edge) repeat-x,
+      linear-gradient(#000 0 0) top / 100% calc(100% - var(--edge)) no-repeat;
+    padding-bottom: calc(1.5rem + var(--edge));
+  }
+  .receipt h2 { text-align: center; color: var(--ink); font-size: 0.85rem; }
+  .receipt-meta, .total {
+    display: flex; justify-content: space-between; margin: 0;
+    padding: 0.4rem 0; border-block: 1px dashed #2a211855;
+    text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.12em; color: var(--muted);
+  }
+  ol { list-style: none; margin: 0; padding: 0.5rem 0; }
+  li { display: flex; align-items: baseline; gap: 0.5rem; padding: 0.22rem 0; }
+  .dots { flex: 1; min-width: 1rem; border-bottom: 1px dotted #2a211866; transform: translateY(-0.25em); }
+  .qty { color: var(--muted); }
+  .total { border-top-style: double; border-top-width: 3px; border-bottom: 0; color: var(--ink); font-weight: 700; }
+  .thanks { margin: 0.4rem 0 0; text-align: right; font-size: 1.35rem; color: var(--sun); transform: rotate(-3deg); }
+
+  /* tool tags */
+  .tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.9rem 0.75rem; }
+  .tags li {
+    position: relative;
+    font: 600 1rem/1 var(--sans);
+    padding: 0.6rem 0.9rem 0.6rem 1.6rem;
+    background: var(--sea);
+    color: #fbf7ee;
+    border-radius: 0.3rem 0.6rem 0.6rem 0.3rem;
+    clip-path: polygon(0.7rem 0, 100% 0, 100% 100%, 0.7rem 100%, 0 50%);
+    transition: transform 0.2s;
+  }
+  .tags li::before {
+    content: ''; position: absolute; left: 0.85rem; top: 50%; width: 0.38rem; height: 0.38rem;
+    margin-top: -0.19rem; border-radius: 50%; background: var(--stone);
+  }
+  .tags li:nth-child(5n + 1) { transform: rotate(-3deg); }
+  .tags li:nth-child(5n + 2) { transform: rotate(2deg); background: var(--sun); }
+  .tags li:nth-child(5n + 3) { transform: rotate(-1deg); background: #3c6b3a; }
+  .tags li:nth-child(5n + 4) { transform: rotate(3deg); background: var(--ink); }
+  .tags li:nth-child(5n) { transform: rotate(-2deg); background: #8a5a12; }
+  .tags li:hover { transform: rotate(0) translateY(-2px); }
+
+  /* stack */
+  .stack { margin-top: -1.5rem; }
+  .stack p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+  /* contact */
+  .contact { margin: 0; display: grid; gap: 0.55rem; }
+  .contact div { display: grid; grid-template-columns: 5rem 1fr; gap: 0.75rem; align-items: baseline; }
+  dt { font: 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
+  dd { margin: 0; overflow-wrap: anywhere; }
+
+  @media (max-width: 30rem) {
+    .hero { flex-direction: column-reverse; }
+    .polaroid { width: 7rem; margin-left: auto; margin-bottom: -2.5rem; }
+    .receipt { font-size: 0.85rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tags li { transition: none; }
+  }
+</style>
