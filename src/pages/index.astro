@@ -1,14 +1,250 @@
 ---
-import Header from "../components/Header.astro";
-import Layout from "../components/Layout.astro";
-import Projects from "../components/Projects.astro";
-import Contact from "../components/Contact.astro";
+import { Image } from "astro:assets";
+import me from "../assets/me.webp";
+
+const built = [
+  ["analytics/", "Self-hosted cookieless web analytics"],
+  ["dnd-builder/", "D&D 2024 character builder and rules reference"],
+  ["writing-ws/", "AI writing workspace for stories and RPG campaigns, with an MCP server"],
+  ["food-tracker/", "Food, recipe and workout tracker with AI food scanning"],
+  ["rpg-music/", "Tabletop RPG music player and playlist studio"],
+  ["image-gen/", "Local ComfyUI image generator alternative"],
+  ["cloud-backup/", "Two-way cloud backup desktop app (rclone bisync)"],
+  ["crypto-calc/", "Cryptography calculator that shows its work"],
+  ["subtitles/", "Subtitle generator for video and audio"],
+  ["video-dl/", "Video downloader and re-encoder"],
+  ["albums/", "Photo and video album site"],
+  ["media-share/", "Self-hosted media sharing platform"],
+  ["mortgage/", "Mortgage comparison calculator"],
+  ["tab-sorter/", "Browser tab sorting extension"],
+  ["annotate/", "Desktop screen annotation tool"],
+];
+const tools = ["T3 Code", "omp", "Claude Code", "Codex", "Hermes"];
+const stack = ["TypeScript", "React", "Astro", "SolidJS", "Vite", "Bun/Node", "Go", "Rust", "Python", "Docker"];
+const contact = [
+  ["email", "krzysztofwidacki@gmail.com", "mailto:krzysztofwidacki@gmail.com"],
+  ["web", "widacki.me", "https://widacki.me"],
+  ["phone", "+48 608 466 822", "tel:+48608466822"],
+  ["github", "github.com/Angael", "https://github.com/Angael"],
+  ["skills", "Angael/krzysztof-widacki/.agents/skills", "https://github.com/Angael/krzysztof-widacki/tree/main/.agents/skills"],
+];
 ---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="Krzysztof Widacki builds software mostly by vibe coding with AI agents." />
+  <link rel="icon" href="/favicon.ico" />
+  <title>Krzysztof Widacki</title>
+</head>
+<body>
+  <div class="win">
+    <header class="bar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="path">~/krzysztof-widacki</span>
+      <span class="model">session · live</span>
+    </header>
 
-<Layout>
-  <Header />
+    <main class="log">
+      <div class="turn user">
+        <span class="who">&gt;</span>
+        <div>
+          <h1>whoami <strong>Krzysztof Widacki</strong></h1>
+          <figure class="attach">
+            <Image src={me} alt="Krzysztof Widacki" width={96} height={128} loading="eager" />
+            <figcaption>[image #1] me.webp</figcaption>
+          </figure>
+        </div>
+      </div>
 
-  <Projects />
+      <div class="turn agent">
+        <span class="who">●</span>
+        <p>Builds software, mostly by vibe coding with AI agents. Small tools he wanted to exist, then shipped.</p>
+      </div>
 
-  <Contact />
-</Layout>
+      <section class="turn agent" aria-labelledby="built">
+        <span class="who">●</span>
+        <div class="block">
+          <div class="call"><span class="fn">Built</span><span class="arg">(ls ~/projects)</span></div>
+          <h2 id="built" class="sr">Built</h2>
+          <ul class="diff">
+            {built.map(([dir, what]) => (
+              <li><span class="sign">+</span><span class="dir">{dir}</span><span class="what">{what}</span></li>
+            ))}
+          </ul>
+          <div class="meta">⎿ {built.length} entries</div>
+        </div>
+      </section>
+
+      <section class="turn agent" aria-labelledby="tools">
+        <span class="who">●</span>
+        <div class="block">
+          <div class="call"><span class="fn">Tools</span><span class="arg">(which agents)</span></div>
+          <h2 id="tools" class="sr">Tools</h2>
+          <ul class="chips">
+            {tools.map((t) => <li>{t}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section class="turn agent dim" aria-labelledby="stack">
+        <span class="who">●</span>
+        <div class="block">
+          <div class="call"><span class="fn">Stack</span><span class="arg">(usual)</span></div>
+          <h2 id="stack" class="sr">Stack</h2>
+          <p class="stack">{stack.join("  ·  ")}</p>
+        </div>
+      </section>
+
+      <section class="turn agent" aria-labelledby="contact">
+        <span class="who">●</span>
+        <div class="block">
+          <div class="call"><span class="fn">Contact</span><span class="arg">(cat contact.json)</span></div>
+          <h2 id="contact" class="sr">Contact</h2>
+          <dl class="kv">
+            {contact.map(([k, v, href]) => (
+              <div><dt>{k}</dt><dd><a href={href}>{v}</a></dd></div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <div class="prompt" aria-hidden="true">
+        <span class="who">&gt;</span><span class="cursor"></span>
+      </div>
+    </main>
+
+    <footer class="status">
+      <span>? for shortcuts</span>
+      <span>accept edits on</span>
+    </footer>
+  </div>
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #0b0d0c;
+    --panel: #111412;
+    --line: #232925;
+    --text: #d6ddd8;
+    --muted: #8a958e;
+    --accent: #e8a46b;
+    --add: #7fd69a;
+    --add-bg: #12261a;
+    --link: #9cc8ff;
+    --mono: ui-monospace, "JetBrains Mono", "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    color: var(--text);
+    font: 15px/1.6 var(--mono);
+    background:
+      radial-gradient(1200px 500px at 80% -10%, #1a2a20 0%, transparent 60%),
+      var(--bg);
+    min-height: 100vh;
+    padding: clamp(0px, 4vw, 48px) clamp(0px, 3vw, 32px);
+  }
+  @media (max-width: 600px) { body { padding: 0; }
+  }
+  a { color: var(--link); text-decoration: none; overflow-wrap: anywhere; }
+  a:hover, a:focus-visible { text-decoration: underline; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .win {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -30px #000;
+  }
+  @media (max-width: 600px) { .win { border-radius: 0; border-inline: 0; } }
+
+  .bar, .status {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 16px; font-size: 12px; color: var(--muted);
+    border-bottom: 1px solid var(--line);
+  }
+  .status { border-bottom: 0; border-top: 1px solid var(--line); justify-content: space-between; }
+  .dots { display: flex; gap: 6px; }
+  .dots i { width: 10px; height: 10px; border-radius: 50%; background: #2c332e; }
+  .path, .model { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  @media (max-width: 420px) { .path { display: none; } }
+  .model { margin-left: auto; color: var(--add); }
+  .model::before { content: "● "; animation: pulse 2s ease-in-out infinite; }
+
+  .log { padding: 28px 16px 12px; display: grid; gap: 26px; }
+  @media (min-width: 640px) { .log { padding: 36px 32px 16px; } }
+
+  .turn { display: grid; grid-template-columns: 20px 1fr; gap: 6px 10px; min-width: 0; }
+  .turn > div, .turn > p { min-width: 0; }
+  .who { color: var(--muted); user-select: none; }
+  .agent > .who { color: var(--accent); }
+  .turn p { margin: 0; }
+
+  h1 { font-size: 15px; font-weight: 400; margin: 0; color: var(--muted); }
+  h1 strong {
+    display: block; margin-top: 4px;
+    font-size: clamp(28px, 7vw, 52px); line-height: 1.05; letter-spacing: -0.03em;
+    color: var(--text); font-weight: 700;
+  }
+  .attach { display: flex; align-items: end; gap: 10px; margin: 14px 0 0; }
+  .attach img {
+    width: 56px; height: 75px; object-fit: cover; object-position: 50% 20%;
+    border: 1px solid var(--line); border-radius: 4px; filter: grayscale(.35) contrast(1.05);
+  }
+  .attach figcaption { font-size: 12px; color: var(--muted); }
+
+  .call { color: var(--text); }
+  .fn { font-weight: 700; }
+  .arg { color: var(--muted); }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+  .diff {
+    list-style: none; margin: 10px 0 0; padding: 6px 0;
+    border-left: 1px solid var(--line);
+  }
+  .diff li {
+    display: grid; grid-template-columns: 24px minmax(0, 132px) 1fr; gap: 8px;
+    padding: 3px 12px 3px 4px; background: var(--add-bg);
+    border-bottom: 1px solid var(--panel);
+  }
+  .diff li:hover { background: #183222; }
+  .sign { color: var(--add); text-align: center; user-select: none; }
+  .dir { color: var(--add); opacity: .75; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .what { color: #e6f3ea; }
+  @media (max-width: 560px) {
+    .diff li { grid-template-columns: 18px 1fr; }
+    .dir { display: none; }
+    .diff li { padding-block: 5px; }
+  }
+
+  .chips { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips li { border: 1px solid var(--line); padding: 2px 10px; border-radius: 4px; color: var(--accent); }
+  .chips li::before { content: "$ "; color: var(--muted); }
+
+  .dim { opacity: .7; font-size: 13px; }
+  .stack { margin-top: 6px !important; color: var(--muted); }
+
+  .kv { margin: 10px 0 0; display: grid; gap: 4px; }
+  .kv div { display: grid; grid-template-columns: 72px 1fr; gap: 8px; }
+  .kv dt { color: var(--muted); }
+  .kv dt::after { content: ":"; }
+  .kv dd { margin: 0; min-width: 0; }
+
+  .prompt { display: grid; grid-template-columns: 20px 1fr; gap: 10px; color: var(--muted); padding-top: 6px; border-top: 1px dashed var(--line); padding-top: 18px; }
+  .cursor { width: 9px; height: 1.2em; background: var(--text); animation: blink 1.1s steps(1) infinite; }
+
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes pulse { 50% { opacity: .3; } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before { animation: none !important; }
+  }
+</style>
