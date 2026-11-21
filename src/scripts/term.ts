@@ -359,15 +359,27 @@ const skip = () => {
   finishIntro();
 };
 
+// Only deliberate input skips the intro: a real click/tap (not a touch-scroll or
+// right/middle click), or Enter/Escape/Space/a printable key without modifiers.
+// Modifier keys and shortcuts (Alt+Tab, Ctrl+R, Shift...) must not skip.
+const onKey = (e: KeyboardEvent) => {
+  if (e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+  if (e.key.length !== 1 && e.key !== "Enter" && e.key !== "Escape") return;
+  skip();
+};
+const onClick = (e: MouseEvent) => {
+  if (e.button === 0) skip();
+};
+
 if (reduced) {
   root.classList.add("run");
   finishIntro();
 } else {
-  addEventListener("keydown", skip, { once: true });
-  addEventListener("pointerdown", skip, { once: true });
+  addEventListener("keydown", onKey);
+  addEventListener("click", onClick);
   intro().then(() => {
-    removeEventListener("keydown", skip);
-    removeEventListener("pointerdown", skip);
+    removeEventListener("keydown", onKey);
+    removeEventListener("click", onClick);
     skipping = false;
     if (matchMedia("(pointer: fine)").matches) input.focus({ preventScroll: true });
   });
